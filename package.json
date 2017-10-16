@@ -1,6 +1,6 @@
 {
     "name": "@remobile/react-native-baidu-map",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A baidu map for react-native, support for ios and android",
     "main": "index.js",
     "author": {

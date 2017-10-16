@@ -42,7 +42,6 @@ public class RCTBaiduMapPackage implements ReactPackage {
         );
     }
 
-    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
