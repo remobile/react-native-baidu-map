@@ -24,6 +24,7 @@ export default class MapView extends Component {
         center: PropTypes.object,
         marker: PropTypes.object,
         markers: PropTypes.array,
+        polyline: PropTypes.array,
         childrenPoints: PropTypes.array,
         onMapStatusChangeStart: PropTypes.func,
         onMapStatusChange: PropTypes.func,
@@ -43,6 +44,7 @@ export default class MapView extends Component {
         childrenPoints: [],
         marker: null,
         markers: [],
+        polyline: [],
         center: null,
         zoom: 10
     };

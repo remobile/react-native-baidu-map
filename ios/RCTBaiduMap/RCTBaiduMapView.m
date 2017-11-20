@@ -90,6 +90,21 @@
     return coor;
 }
 
+-(void)setPolyline:(NSArray *)line {
+    NSLog(@"setPolyline");
+    // 添加折线覆盖物
+    if (line.count > 0) {
+        CLLocationCoordinate2D *coors = (CLLocationCoordinate2D*)malloc(line.count * sizeof(CLLocationCoordinate2D));
+        for (int i = 0; i < line.count; i++)  {
+             coors[i]  = [self getCoorFromMarkerOption:[line objectAtIndex:i]];
+        }
+        BMKPolyline* polyline = [BMKPolyline polylineWithCoordinates:coors count:line.count];
+        [self addOverlay:polyline];
+        free(coors);
+    }
+}
+
+
 -(void)addMarker:(BMKPointAnnotation *)annotation option:(NSDictionary *)option {
     [self updateMarker:annotation option:option];
     [self addAnnotation:annotation];
@@ -104,6 +119,5 @@
     annotation.coordinate = coor;
     annotation.title = title;
 }
-
 
 @end
