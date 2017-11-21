@@ -27,8 +27,9 @@ RCT_CUSTOM_VIEW_PROPERTY(center, CLLocationCoordinate2D, RCTBaiduMapView) {
 }
 
 
-+(void)initSDK:(NSString*)key {
-    
++(void)initSDK:(NSString*)key mcode:(NSString*)mcode serviceID:(NSUInteger)serviceID {
+    BTKServiceOption *basicInfoOption = [[BTKServiceOption alloc] initWithAK:key mcode:mcode serviceID:serviceID keepAlive:true];
+    [[BTKAction sharedInstance] initInfo:basicInfoOption];
     BMKMapManager* _mapManager = [[BMKMapManager alloc]init];
     BOOL ret = [_mapManager start:key  generalDelegate:nil];
     if (!ret) {

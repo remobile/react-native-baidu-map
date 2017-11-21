@@ -17,6 +17,7 @@
 #import <BaiduMapAPI_Map/BMKPointAnnotation.h>
 #import <BaiduMapAPI_Map/BMKPolyline.h>
 #import <BaiduMapAPI_Map/BMKPolylineView.h>
+#import <BaiduTraceSDK/BaiduTraceSDK.h>
 
 #import <UIKit/UIKit.h>
 

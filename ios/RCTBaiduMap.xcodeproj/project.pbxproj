@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF4E3BB81FC2A9B30076260D /* YYTraceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E3BB71FC2A9B30076260D /* YYTraceModule.m */; };
 		EF154DCC1D562193003146DF /* RCTBaiduMapViewManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF6660E71D55E68000DB8D08 /* RCTBaiduMapViewManager.h */; };
 		EF3C225A1CC2C30D0099E9B6 /* RCTBaiduMapView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF3C22591CC2C30D0099E9B6 /* RCTBaiduMapView.h */; };
 		EF3C225C1CC2C30D0099E9B6 /* RCTBaiduMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3C225B1CC2C30D0099E9B6 /* RCTBaiduMapView.m */; };
@@ -30,6 +31,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF4E3BB61FC2A9B30076260D /* YYTraceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTraceModule.h; sourceTree = "<group>"; };
+		DF4E3BB71FC2A9B30076260D /* YYTraceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTraceModule.m; sourceTree = "<group>"; };
 		EF3C22561CC2C30D0099E9B6 /* libRCTBaiduMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTBaiduMap.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3C22591CC2C30D0099E9B6 /* RCTBaiduMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTBaiduMapView.h; sourceTree = "<group>"; };
 		EF3C225B1CC2C30D0099E9B6 /* RCTBaiduMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTBaiduMapView.m; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 		EF3C22581CC2C30D0099E9B6 /* RCTBaiduMap */ = {
 			isa = PBXGroup;
 			children = (
+				DF4E3BB61FC2A9B30076260D /* YYTraceModule.h */,
+				DF4E3BB71FC2A9B30076260D /* YYTraceModule.m */,
 				EF3C22591CC2C30D0099E9B6 /* RCTBaiduMapView.h */,
 				EF3C225B1CC2C30D0099E9B6 /* RCTBaiduMapView.m */,
 				EF6660E71D55E68000DB8D08 /* RCTBaiduMapViewManager.h */,
@@ -139,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4E3BB81FC2A9B30076260D /* YYTraceModule.m in Sources */,
 				EF4ABB0D1DC378CF008E75C9 /* GeolocationModule.m in Sources */,
 				EF4ABB101DC3793B008E75C9 /* BaseModule.m in Sources */,
 				EF3C225C1CC2C30D0099E9B6 /* RCTBaiduMapView.m in Sources */,
