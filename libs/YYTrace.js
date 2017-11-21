@@ -83,5 +83,19 @@ export default {
                 resolve(resp);
             });
         });
+    },
+    queryLatestPoint(entityName, serviceID)  {
+        return new Promise((resolve, reject) => {
+            try {
+                _module.queryLatestPoint(entityName, serviceID);
+            }
+            catch (e) {
+                reject(e);
+                return;
+            }
+            DeviceEventEmitter.once('onQueryTrackLatestPoint', resp => {
+                resolve(resp);
+            });
+        });
     }
 };

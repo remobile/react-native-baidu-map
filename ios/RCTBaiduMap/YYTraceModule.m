@@ -54,6 +54,19 @@ RCT_EXPORT_METHOD(queryHistoryTrack:(NSString *)entityName serviceID:(NSUInteger
     });
 }
 
+RCT_EXPORT_METHOD(queryLatestPoint:(NSString *)entityName serviceID:(NSUInteger)serviceID) {
+    dispatch_async(GLOBAL_QUEUE, ^{
+        // 设置纠偏选项
+        BTKQueryTrackProcessOption *option = [[BTKQueryTrackProcessOption alloc] init];
+        option.denoise = TRUE;
+        option.mapMatch = TRUE;
+        option.radiusThreshold = 10;
+        // 构造请求对象
+        BTKQueryTrackLatestPointRequest *request = [[BTKQueryTrackLatestPointRequest alloc] initWithEntityName:entityName processOption: option outputCootdType:BTK_COORDTYPE_BD09LL serviceID:serviceID tag:1];
+        // 发起查询请求
+        [[BTKTrackAction sharedInstance] queryTrackLatestPointWith:request delegate:self];
+    });
+}
 
 #pragma mark - BTKTraceDelegate
 -(void)onStartService:(BTKServiceErrorCode)error {
@@ -248,6 +261,31 @@ RCT_EXPORT_METHOD(queryHistoryTrack:(NSString *)entityName serviceID:(NSUInteger
     body[@"points"] = dict[@"points"];
 
     [self sendEvent:@"onQueryHistoryTrack" body:body];
+}
+
+-(void)onQueryTrackLatestPoint:(NSData *)response {
+    NSMutableDictionary *body = [self getEmptyBody];
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingAllowFragments error:nil];
+    if (nil == dict) {
+        NSLog(@"Track LatestPoint查询格式转换出错");
+        body[@"title"] = @"格式转换出错";
+        body[@"message"] = @"数据为空";
+        [self sendEvent:@"onQueryTrackCacheInfo" body:body];
+        return;
+    }
+    if (0 != [dict[@"status"] intValue]) {
+        NSLog(@"实时位置查询返回错误");
+        body[@"title"] = @"查询返回错误";
+        body[@"message"] = dict[@"message"];
+        [self sendEvent:@"onQueryTrackCacheInfo" body:body];
+        return;
+    }
+    
+    body[@"title"] = @"查询信息成功";
+    body[@"message"] = dict[@"message"];
+    body[@"point"] = dict[@"latest_point"];
+    
+    [self sendEvent:@"onQueryTrackLatestPoint" body:body];
 }
 
 @end
