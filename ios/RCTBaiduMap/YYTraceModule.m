@@ -54,12 +54,12 @@ RCT_EXPORT_METHOD(queryHistoryTrack:(NSString *)entityName serviceID:(NSUInteger
     });
 }
 
-RCT_EXPORT_METHOD(queryLatestPoint:(NSString *)entityName serviceID:(NSUInteger)serviceID) {
+RCT_EXPORT_METHOD(queryLatestPoint:(NSString *)entityName serviceID:(NSUInteger)serviceID denoise:(BOOL)denoise mapMatch:(BOOL)mapMatch) {
     dispatch_async(GLOBAL_QUEUE, ^{
         // 设置纠偏选项
         BTKQueryTrackProcessOption *option = [[BTKQueryTrackProcessOption alloc] init];
-        option.denoise = TRUE;
-        option.mapMatch = TRUE;
+        option.denoise = denoise;
+        option.mapMatch = mapMatch;
         option.radiusThreshold = 10;
         // 构造请求对象
         BTKQueryTrackLatestPointRequest *request = [[BTKQueryTrackLatestPointRequest alloc] initWithEntityName:entityName processOption: option outputCootdType:BTK_COORDTYPE_BD09LL serviceID:serviceID tag:1];

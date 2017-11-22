@@ -84,10 +84,10 @@ export default {
             });
         });
     },
-    queryLatestPoint(entityName, serviceID)  {
+    queryLatestPoint(entityName, serviceID, denoise, mapMatch)  {
         return new Promise((resolve, reject) => {
             try {
-                _module.queryLatestPoint(entityName, serviceID);
+                _module.queryLatestPoint(entityName, serviceID, denoise, mapMatch);
             }
             catch (e) {
                 reject(e);
