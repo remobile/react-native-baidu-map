@@ -17,6 +17,8 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.MapViewLayoutParams;
 import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableArray;
@@ -156,6 +158,23 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
             }
         }
         mMarkersMap.put(key, markers);
+    }
+
+    @ReactProp(name="polyline")
+    public void setPolyline(MapView mapView, ReadableArray options) {
+        //构建折线点坐标
+        if (options.size() > 0) {
+            BaiduMap map = mapView.getMap();
+            List<LatLng> points = new ArrayList<LatLng>();
+            for (int i = 0; i < options.size(); i++) {
+               ReadableMap option = options.getMap(i);
+               points.add(i,MarkerUtil.getLatLngFromOption(option));
+            }
+            //绘制折线
+            OverlayOptions ooPolyline = new PolylineOptions().width(10)
+                   .color(0xAAFF0000).points(points);
+            map.addOverlay(ooPolyline);
+        }
     }
 
     @ReactProp(name = "childrenPoints")

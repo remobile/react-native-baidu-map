@@ -91,7 +91,7 @@ RCT_EXPORT_METHOD(queryLatestPoint:(NSString *)entityName serviceID:(NSUInteger)
             break;
         case BTK_START_SERVICE_PARAM_ERROR:
             title = @"轨迹服务开启失败";
-            message = @"参数错误,点击右上角设置按钮设置参数";
+            message = @"参数错误";
             break;
         case BTK_START_SERVICE_INTERNAL_ERROR:
             title = @"轨迹服务开启失败";

@@ -14,10 +14,14 @@ import React, {
 const _module = NativeModules.BaiduYYTraceModule;
 
 export default {
-    startService(entityName) {
+    startService(entityName, serviceId) {
         return new Promise((resolve, reject) => {
             try {
-                _module.startService(entityName);
+                if (Platform.OS == 'android') {
+                    _module.startService(entityName, serviceId);
+                } else {
+                    _module.startService(entityName);
+                }
             }
             catch (e) {
                 reject(e);

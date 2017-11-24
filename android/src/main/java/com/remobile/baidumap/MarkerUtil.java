@@ -34,10 +34,30 @@ public class MarkerUtil {
     }
 
 
-    private static LatLng getLatLngFromOption(ReadableMap option) {
+    public static LatLng getLatLngFromOption(ReadableMap option) {
         double latitude = option.getDouble("latitude");
         double longitude = option.getDouble("longitude");
         return new LatLng(latitude, longitude);
 
+    }
+
+    /**
+     * 校验double数值是否为0
+     *
+     * @param value
+     *
+     * @return
+     */
+    public static boolean isEqualToZero(double value) {
+        return Math.abs(value - 0.0) < 0.01 ? true : false;
+    }
+
+    /**
+     * 经纬度是否为(0,0)点
+     *
+     * @return
+     */
+    public static boolean isZeroPoint(double latitude, double longitude) {
+        return isEqualToZero(latitude) && isEqualToZero(longitude);
     }
 }

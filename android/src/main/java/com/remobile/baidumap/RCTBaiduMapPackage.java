@@ -30,7 +30,8 @@ public class RCTBaiduMapPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-                new GeolocationModule(reactContext)
+                new GeolocationModule(reactContext),
+                new YYTraceModule(reactContext)
         );
     }
 
